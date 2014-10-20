@@ -49,7 +49,7 @@ module RequirejsHelper
           if run_config.has_key? 'paths'
             # Add paths for assets specified by full URL (on a CDN)
             run_config['paths'].each do |k, v|
-              paths[k] = v if v.is_a?(Array) || v =~ /^https?:/
+              paths[k] = v if v.is_a?(Array) || v =~ /^(https?:)?\/\//
             end
           end
 
@@ -57,8 +57,6 @@ module RequirejsHelper
           # and in the build_config.
           run_config['paths'] = paths
         end
-
-        run_config['baseUrl'] = base_url(name)
 
         html.concat(content_tag(:script) do
           script = "require.config(#{run_config.to_json});"

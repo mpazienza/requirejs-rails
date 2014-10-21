@@ -58,6 +58,8 @@ module RequirejsHelper
           run_config['paths'] = paths
         end
 
+        run_config['baseUrl'] = this_url(name)
+
         html.concat(content_tag(:script) do
           script = "require.config(#{run_config.to_json});"
 
@@ -107,7 +109,7 @@ module RequirejsHelper
     content_tag(:script, "", src: javascript_path(name))
   end
 
-  def base_url(js_asset)
+  def this_url(js_asset)
     js_asset_path = javascript_path(js_asset)
     uri = URI.parse(js_asset_path)
     asset_host = uri.host && js_asset_path.sub(uri.request_uri, '')

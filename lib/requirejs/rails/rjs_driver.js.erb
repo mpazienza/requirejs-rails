@@ -1,6 +1,6 @@
 var requirejs = require(<%= rjs_path.to_s.dump %>)
 var baseConfig = <%=
-cdn_pattern = Regexp.new("\\Ahttps?://")
+cdn_pattern = Regexp.new("\\A(https?:)?//")
 
 modifiedHash = build_config.select { |k, _| k != "modules" }
 pathsHash = modifiedHash["paths"]

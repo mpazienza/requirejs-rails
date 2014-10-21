@@ -116,7 +116,7 @@ module Requirejs
               mod = mods[0]
               name = mod['name']
               mod['name'] = 'almond'
-              mod['include'] = [name]
+              mod['include'] = name
               mod['insertRequire'] = [name]
           end
         end
